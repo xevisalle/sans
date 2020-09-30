@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title>SANS webclient</title>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+</head>
+<body>
+  <h1>SANS webclient</h1>
+  <button id="bGenProof">Generate proof</button>
+  <pre class="proof">Proof: <code id="proof"></code></pre>
+  <pre class="proof">Proof is verified: <code id="result"></code></pre>
+  <pre class="proof">Proving time: <code id="time"></code></pre>
+  <script src="snarkjs.min.js">   </script>
+  <script>
+    const proofCompnent = document.getElementById('proof');
+    const resultComponent = document.getElementById('result');
+    const timeComponent = document.getElementById('time');
+    const bGenProof = document.getElementById("bGenProof");
+
+    bGenProof.addEventListener("click", calculateProof);
+
+    var startTime, endTime;
+
+    async function calculateProof() {
+
+      startTime = new Date();
+
+      const input = await fetch("input.json").then(function(res){
+        return res.json();
+      });
+
+      const {proof, publicSignals} = await snarkjs.groth16.fullProve(input, "sans.wasm", "circuit_final.zkey");
+
+      endTime = new Date();
+      timeComponent.innerHTML = (endTime - startTime) + ' ms';
+      proofCompnent.innerHTML = JSON.stringify(proof, null, 1);
+      
+      const vkey = await fetch("verification_key.json").then(function(res){
+        return res.json();
+      });
+
+      const res = await snarkjs.groth16.verify(vkey, publicSignals, proof);
+      resultComponent.innerHTML = res;
+    }
+  </script>
+</body>
+</html>

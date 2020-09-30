@@ -1,0 +1,1 @@
+snarkjs groth16 verify data/verification_key.json data/public.json data/proof.json
