@@ -1,6 +1,8 @@
 # SANS: Self-sovereign Authentication for Network Slices
 
-This is a PoC implementation of SANS, a protocol based on zk-SNARKs for self-sovereign authentication in 5G network slices. Such implementation uses [snarkjs](https://github.com/iden3/snarkjs), a JavaScript and WASM framework for deploying zk-SNARK applications. Even when we focus on Network Slices, our protocol is scalable to other scenarios where a private and trustworthy authentication system is required. A paper providing all the details regarding our protocol will be provided soon.
+This is a PoC implementation of SANS, a protocol based on zk-SNARKs for self-sovereign authentication in 5G network slices. Such implementation uses [snarkjs](https://github.com/iden3/snarkjs), a JavaScript and WASM framework for deploying zk-SNARK applications. Even when we focus on Network Slices, our protocol is scalable to other scenarios where a private and trustworthy authentication system is required. 
+
+This work has been accepted to be published in the special issue *Trustworthy Networking for Beyond 5G Networks 2020* of the journal *Security and Communication Networks*. A preprint providing all the details regarding our protocol can be found [here](https://arxiv.org/pdf/2010.15867.pdf).
 
 **DISCLAIMER:** this PoC implementation is currently **unstable**, it is not intended to be used in a production environment, only for academic purposes.
 
