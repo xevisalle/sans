@@ -14,7 +14,7 @@ Our protocol is currently using the Groth'16 zk-SNARK along with the elliptic cu
 <img src="./docs/circuit.png" width="40%"/>
 </p>
 
-Both hashing functions are Poseidon, and the signing algorithm is EdDSA. Overall, the number of constraints is 7565.
+Both hashing functions are Poseidon, and the signing algorithm is EdDSA. Overall, the number of constraints is 4438.
 
 ## Install dependencies
 
